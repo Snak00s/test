@@ -1,16 +1,13 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import pandas as pd
 
-x = np.array([1, 2, 6, 8])
-y = np.array([3, 8, 1, 10])
-plt.subplot(2, 2, 1)
-plt.plot(x,y,'-', c='r', lw='5')
-x2 = np.array([1, 2, 3, 1])
-y2 = np.array([3, 9, 5, 12])
-plt.subplot(2, 2, 1)
-plt.plot(x2,y2,'-', c='b', lw='5')
-plt.title('La taille du flop', loc='right')
-plt.xlabel('temps')
-plt.ylabel('taille du flop')
-plt.grid()
-plt.show()
+df = pd.read_csv("C:/Users/Snak00s/Desktop/coding/test/pour test2/calcul du temps.csv")
+
+df_value = df[['Duration', 'Pulse', 'Maxpulse', 'Calories']].dropna()
+
+df_value.loc[7, 'Duration'] = 45
+
+corrdf = df_value.corr()
+
+corrdf.to_csv("C:/Users/Snak00s/Desktop/coding/test/pour test2/corr.csv", index=False)
